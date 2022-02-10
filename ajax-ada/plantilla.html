@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peticiones asíncronas con jQuery</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <script>
+    $(document).ready(inicio);
+    function inicio() {
+      $("#ajax").click(function() {
+        let nom = $("#nombre").val();
+        let ape = $("#apellido").val();
+        let parametros = {
+          "nombre": nom,
+          "apellido": ape
+        }
+        $.ajax({
+          url: "saludo.php",
+          data: parametros,
+          success: function(respuesta) {
+            $("#mostrar").text(respuesta);
+          },
+          error: function(xhr, status) {
+            alert("Ha ocurrido un error");
+          },
+          complete: function(xhr, status) {
+            alert("Petición realizada");
+          }
+          //async: false   // con este parametro controlariamos la sincronia como un await.
+        });
+      });
+    }
+  </script>
+</head>
+<body>
+  <input type="text" name="nombre" id="nombre">
+  <input type="text"name="apellido" id="apellido">
+  <button id="ajax">Enviar Ajax</button>
+  <button id="enviarGet">Enviar Get</button>
+  <button id="enviarGetMensajes">Enviar Get</button>
+  <button id="enviarPost">Enviar Post</button>
+  <button id="getScript">getScript</button>
+  <button id="getJSON">getJSON</button>
+  <button id="load">Usar Load</button>
+  <br><br>
+  <p id="mostrar"></p>
+</body>
+</html>

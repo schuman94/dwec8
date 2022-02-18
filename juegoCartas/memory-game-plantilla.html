@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memory Game</title>
+  <script src="main copy.js"></script>
+  <script src="//unpkg.com/alpinejs" defer></script>
+  <!-- <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script> -->
+  <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Memory Game -->
+    <div x-data="juego()" class="px-10 flex items-center justify-center min-h-screen">
+      <h1 class="fixed top-0 right-0 m-10 font-bold text-3xl">
+        <span x-text="puntos"></span>
+        <span class="text-xs">pts</span>
+      </h1>
+
+        <div class="flex-1 grid grid-cols-4 gap-10">
+          <template x-for="carta in cartas">
+            <div>
+              <button x-show="!carta.borrada"
+              @click="girarCarta(carta)" 
+              :style="`background: ${carta.girada ? carta.color : 'grey'}`" 
+              class="h-32 cursor-pointer bg-gray-300 w-full">FOO</button>
+            </div>
+          </template>
+        </div>
+    </div>
+
+    <div class="fixed bottom-0 right-0 bg-green-500 text-white p-2 m-10 rounded">Mensaje Flash</div>
+
+</body>
+</html>

@@ -24,9 +24,16 @@ document.addEventListener('alpine:init', () => {
 
       if (this.cartasGiradas.length == 2) {
         if (this.cartasGiradas[0].color == this.cartasGiradas[1].color) {
-          this.cartasGiradas.forEach(carta => carta.borrada = true);
+          setTimeout(() => {
+            this.cartasGiradas.forEach(carta => carta.borrada = true);
+            if(this.puntos == this.cartas.length) {
+              alert('Enhorabuena, has ganado');
+            }
+          }, 750)
         }
-        this.cartasGiradas.forEach(carta => carta.girada = false);
+        setTimeout(() => {
+          this.cartasGiradas.forEach(carta => carta.girada = false);
+        }, 750)
       }
 
       console.log(this.cartasGiradas)

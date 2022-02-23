@@ -5,9 +5,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Memory Game</title>
-  <script src="main copy.js"></script>
-  <script src="//unpkg.com/alpinejs" defer></script>
-  <!-- <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script> -->
+  <script src="main.js"></script>
+  <!-- <script src="//unpkg.com/alpinejs" defer></script> -->
+  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
   <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
@@ -23,15 +23,24 @@
           <template x-for="carta in cartas">
             <div>
               <button x-show="!carta.borrada"
-              @click="girarCarta(carta)" 
-              :style="`background: ${carta.girada ? carta.color : 'grey'}`" 
-              class="h-32 cursor-pointer bg-gray-300 w-full">FOO</button>
+                @click="girarCarta(carta)" 
+                :style="`background: ${carta.girada ? carta.color : 'grey'}`" 
+                class="h-32 cursor-pointer bg-gray-300 w-full">
+              </button>
             </div>
           </template>
         </div>
     </div>
 
-    <div class="fixed bottom-0 right-0 bg-green-500 text-white p-2 m-10 rounded">Mensaje Flash</div>
+    <div x-data="{ mostrado: false, mensaje: 'Mensaje por defecto'}"
+      x-text="mensaje"
+      x-show.transition.duration.500="mostrado"
+      @parejaencontrada.window="mensaje = $event.detail.mensaje;
+                                mostrado=true;
+                                setTimeout(() => mostrado = false, 1000)"
+      class="fixed bottom-0 right-0 bg-green-500 text-white p-2 m-10 rounded">
+        <span x-text="mensaje"></span>
+    </div>
 
 </body>
 </html>

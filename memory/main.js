@@ -1,6 +1,6 @@
 function juego() {
   return {
-    cartas: [
+    cartas: crearBaraja() /* [
       { color: 'green', girada: false, borrada: false, numero: 1 },
       { color: 'red', girada: false, borrada: false, numero: 1 },
       { color: 'blue', girada: false, borrada: false, numero: 1 },
@@ -35,8 +35,8 @@ function juego() {
       { color: 'green', girada: false, borrada: false, numero: 4 },
       { color: 'red', girada: false, borrada: false, numero: 4 },
       { color: 'blue', girada: false, borrada: false, numero: 4 },
-      { color: 'yellow', girada: false, borrada: false, numero: 4 },
-    ],
+      { color: 'yellow', girada: false, borrada: false, numero: 4 }
+    ] */,
 
     iniciado: false,
 
@@ -122,4 +122,19 @@ function lanzaparejaincorrecta(mensaje) {
   let event = new CustomEvent ('parejaincorrecta', {detail: {mensaje: mensaje}});
 
   window.dispatchEvent(event);
+}
+
+// Esta funcion no pertenece a juego, pero sirve para ahorrar escribir manualmente la baraja.
+function crearBaraja() {
+  let colores = ['green','red', 'blue', 'yellow'];
+  let numeros = [1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4];
+  let cartas = [];
+  for (let i = 0; i < 32; i++) {
+    cartas.push({color: colores[0], girada: false, borrada: false, numero: numeros[0]})
+    colores.push(colores[0]);
+    colores.splice(0, 1);
+    numeros.push(numeros[0]);
+    numeros.splice(0, 1);
+  }
+  return cartas;
 }

@@ -14,7 +14,6 @@
 <body>
     <!-- Memory Game -->
     <div x-data="juego()"
-         x.show="mostrado"
          class="px-10 flex items-center justify-center min-h-screen">
 
       <button @click="iniciar()" x-show="!iniciado" class="bg-blue-300">Iniciar</button>
@@ -24,13 +23,14 @@
         <span class="text-xs">pts</span>
       </h1>
 
-      <div x-show="iniciado" class="flex-1 grid grid-cols-4 gap-10">    
+      <div x-show="iniciado" class="flex-1 grid grid-cols-8 gap-10">    
         <template x-for="carta in cartas">
           <div>
             <button :style="'background: ' + (carta.girada ? carta.color : 'grey')"
                     @click="girarCarta(carta)"
                     x-show="!carta.borrada"
-                    class="h-32 cursor-pointer w-full">
+                    class="h-32 cursor-pointer w-full"
+                    x-text="carta.girada ? carta.numero : ''">
             </button>
           </div>
         </template>

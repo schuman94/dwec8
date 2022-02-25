@@ -1,14 +1,41 @@
 function juego() {
   return {
     cartas: [
-      { color: 'green', girada: false, borrada: false },
-      { color: 'red', girada: false, borrada: false },
-      { color: 'blue', girada: false, borrada: false },
-      { color: 'yellow', girada: false, borrada: false },
-      { color: 'green', girada: false, borrada: false },
-      { color: 'red', girada: false, borrada: false },
-      { color: 'blue', girada: false, borrada: false },
-      { color: 'yellow', girada: false, borrada: false }
+      { color: 'green', girada: false, borrada: false, numero: 1 },
+      { color: 'red', girada: false, borrada: false, numero: 1 },
+      { color: 'blue', girada: false, borrada: false, numero: 1 },
+      { color: 'yellow', girada: false, borrada: false, numero: 1 },
+      { color: 'green', girada: false, borrada: false, numero: 1 },
+      { color: 'red', girada: false, borrada: false, numero: 1 },
+      { color: 'blue', girada: false, borrada: false, numero: 1 },
+      { color: 'yellow', girada: false, borrada: false, numero: 1 },
+
+      { color: 'green', girada: false, borrada: false, numero: 2 },
+      { color: 'red', girada: false, borrada: false, numero: 2 },
+      { color: 'blue', girada: false, borrada: false, numero: 2 },
+      { color: 'yellow', girada: false, borrada: false, numero: 2 },
+      { color: 'green', girada: false, borrada: false, numero: 2 },
+      { color: 'red', girada: false, borrada: false, numero: 2 },
+      { color: 'blue', girada: false, borrada: false, numero: 2 },
+      { color: 'yellow', girada: false, borrada: false, numero: 2 },
+
+      { color: 'green', girada: false, borrada: false, numero: 3 },
+      { color: 'red', girada: false, borrada: false, numero: 3 },
+      { color: 'blue', girada: false, borrada: false, numero: 3 },
+      { color: 'yellow', girada: false, borrada: false, numero: 3 },
+      { color: 'green', girada: false, borrada: false, numero: 3 },
+      { color: 'red', girada: false, borrada: false, numero: 3 },
+      { color: 'blue', girada: false, borrada: false, numero: 3 },
+      { color: 'yellow', girada: false, borrada: false, numero: 3 },
+
+      { color: 'green', girada: false, borrada: false, numero: 4 },
+      { color: 'red', girada: false, borrada: false, numero: 4 },
+      { color: 'blue', girada: false, borrada: false, numero: 4 },
+      { color: 'yellow', girada: false, borrada: false, numero: 4 },
+      { color: 'green', girada: false, borrada: false, numero: 4 },
+      { color: 'red', girada: false, borrada: false, numero: 4 },
+      { color: 'blue', girada: false, borrada: false, numero: 4 },
+      { color: 'yellow', girada: false, borrada: false, numero: 4 },
     ],
 
     iniciado: false,
@@ -50,7 +77,8 @@ function juego() {
       carta.girada = !carta.girada;
       if (this.cartasGiradas.length == 2) {
         setTimeout(() => { 
-        if (this.cartasGiradas[0].color == this.cartasGiradas[1].color) {
+        if (this.cartasGiradas[0].color == this.cartasGiradas[1].color
+          && this.cartasGiradas[0].numero == this.cartasGiradas[1].numero) {
             lanzaparejaencontrada('Pareja encontrada');
             this.sumarPuntos();
             this.cartasGiradas.forEach(carta => carta.borrada  = true);
